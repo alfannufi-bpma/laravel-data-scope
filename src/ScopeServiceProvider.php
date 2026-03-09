@@ -4,7 +4,7 @@ namespace Bpma\DataScope;
 
 use Illuminate\Support\ServiceProvider;
 
-class DataScopeServiceProvider extends ServiceProvider
+class ScopeServiceProvider extends ServiceProvider
 {
     public function register()
     {
