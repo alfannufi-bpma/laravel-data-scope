@@ -1,5 +1,5 @@
 {
-    "name": "bpma/laravel-data-scope",
+    "name": "alfannufi-bpma/laravel-data-scope",
     "description": "Enterprise Data Scoping Engine for Laravel",
     "type": "library",
     "require": {
