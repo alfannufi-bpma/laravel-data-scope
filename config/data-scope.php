@@ -2,16 +2,15 @@
 
 return [
     /*
-    | Mapping String Driver dari Database ke Class Implementasinya
+    | String keys representing the available drivers for data scoping. You can add your own drivers here and implement them in the package.
     */
     'drivers' => [
-        'all' => \App\DataScopes\Drivers\AllScopeDriver::class,
-        'hierarchy' => \App\DataScopes\Drivers\HierarchyScopeDriver::class,
-        'own_kbo' => \App\DataScopes\Drivers\OwnKboScopeDriver::class,
+        'unrestricted' => \App\DataScopes\Drivers\UnrestrictedDriver::class,
+        // Add more drivers as needed, e.g. 'subordinate' => \App\DataScopes\Drivers\SubordinateDriver::class,
     ],
 
     /*
-    | Nama tabel yang akan digunakan oleh package ini
+    | Table names that will be used by the package. You can change these if you want to customize the table names.
     */
     'table_names' => [
         'data_scopes' => 'data_scopes',

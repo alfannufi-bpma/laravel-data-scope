@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -31,6 +32,11 @@ return new class extends Migration
                   
             $table->primary(['data_scope_id', 'model_id', 'model_type'], 'model_has_data_scopes_primary');
         });
+
+        DB::table($tableNames['data_scopes'])->insert([
+            ['name' => 'Unrestricted', 'driver' => 'unrestricted', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Subordinate',  'driver' => 'subordinate',  'created_at' => now(), 'updated_at' => now()],
+        ]);
     }
 
     public function down()
