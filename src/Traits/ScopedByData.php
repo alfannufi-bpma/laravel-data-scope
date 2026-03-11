@@ -4,6 +4,7 @@ namespace Bpma\DataScope\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\App;
+use Bpma\DataScope\Traits\HasDataScopes;
 
 trait ScopedByData
 {
@@ -15,11 +16,13 @@ trait ScopedByData
             return $query->whereRaw('1 = 0');
         }
 
-        if (!method_exists($user, 'getCurrentScopeDriver')) {
-            throw new \Exception('Model User harus menggunakan trait Bpma\DataScope\Traits\HasDataScopes');
+        if (!method_exists($user, 'resolveDriver')) {
+            throw new \RuntimeException(
+                'User model must implement HasDataScopes trait'
+            );
         }
 
-        $driverName = $user->getCurrentScopeDriver();
+        $driverName = $user->resolveDriver();
         if (!$driverName) {
             return $query->whereRaw('1 = 0');
         }
@@ -30,6 +33,7 @@ trait ScopedByData
         }
 
         $driver = App::make($driverClass);
+
         return $driver->apply($query, $user);
     }
 }
