@@ -35,7 +35,6 @@ return new class extends Migration
 
         DB::table($tableNames['data_scopes'])->insert([
             ['name' => 'Unrestricted', 'driver' => 'unrestricted', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Subordinate',  'driver' => 'subordinate',  'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 
